@@ -15,11 +15,6 @@ class Dataset:
         self.dt = column_transformer.fit_transform(dt.iloc[:, 1:])
 
     def get_test_train_datasets(self):
-        dt = pd.read_csv("./datasets/train.csv")
-        train_x,test_x,train_y,test_y = train_test_split(self.dt,dt['label'])
-        return train_x,test_x,train_y,test_y
-
-
-dt1 = Dataset("./datasets/train.csv")
-dt1.get_test_train_datasets()
-dt2 = Dataset("./datasets/test.csv")
+        dt = pd.read_csv("../datasets/train.csv")
+        train_x, test_x, train_y, test_y = train_test_split(self.dt, dt['label'], train_size=.8, shuffle=True)
+        return train_x, test_x, train_y, test_y
